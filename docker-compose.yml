@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  social_auto_posting_db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    # volumes:
+    #   - pgdata:/var/lib/postgresql/data
+    env_file: ./config/.env
+    healthcheck:
+      test: pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}
+      timeout: 5s
+      interval: 30s
+      retries: 3
+
+  social_auto_posting_api:
+    image: social_auto_posting
+    restart: unless-stopped
+    env_file:
+      - ./config/.env
+    depends_on:
+      - social_auto_posting_db
+    ports:
+      - 8000:8000
+
+
+# volumes:
+#   pgdata:

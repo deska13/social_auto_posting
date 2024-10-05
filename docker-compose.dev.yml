@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  social_auto_posting_db:
+    ports:
+      - 5432:5432
+
+  social_auto_posting_api:
+    volumes:
+      - ${PWD}/src:/app/src

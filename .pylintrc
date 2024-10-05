@@ -1,0 +1,23 @@
+[BASIC]
+init-hook='import sys; sys.path.append("src")'
+disable =
+    missing-module-docstring,
+    missing-class-docstring,
+    missing-function-docstring,
+    no-member,
+    unused-import,
+    wrong-import-position,
+    broad-exception-caught,
+    unused-variable,
+    import-outside-toplevel,
+ignore-paths =
+    build,
+    tests,
+    temp,
+    docs,
+    dist,
+    __pycache__,
+    src.infra.migrations,
+extension-pkg-whitelist=
+    pydantic,
+    orjson
